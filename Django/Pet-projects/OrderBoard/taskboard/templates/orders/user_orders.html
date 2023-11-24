@@ -1,0 +1,32 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>My Orders</h1>
+
+    {% if order_list %}
+        {% for order in order_list %}
+            <ul style=" border:1px solid black; width: 500px  ">
+                <li>{{ order.title }}</li>
+                <li>Категория:{{ order.category }} }</li>
+                 <li>Статус заявки:{{ order.status }}</li>
+                <li>{{ order.content }}</li>
+                <li>{{ order.order_time}}</li>
+
+                 {% if order.status == "N" %}
+                    <li><a href="">Удалить заявку </a></li>
+                 {% endif %}
+{#                {% elif order.status == "W" %}#}
+{#                    <li> Комментарий по работе:{{ order.comment }}</li>#}
+{#                {% else %}#}
+{#                    <li>Созданный дизайн:<br> <img style="width: 100px; height: 100px; "#}
+{#                                                   src="{{ order.design_image.url }}"></li>#}
+
+
+
+
+            </ul>
+        {% endfor %}
+    {% else %}
+        <p>Нет заявок</p>
+    {% endif %}
+{% endblock %}

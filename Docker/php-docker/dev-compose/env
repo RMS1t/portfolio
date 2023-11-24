@@ -1,0 +1,8 @@
+XDEBUG_MODE: 'no'
+XDEBUG_TRIGGER: 'no'
+Nginx_port: '80'
+Pg_port:'5432'
+Adminer_port:'8080'
+DB:'basedb'
+USER: 'root'
+PASSWORD:'root'

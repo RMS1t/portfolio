@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ../myproject
+      dockerfile: ../docker/php/Dockerfile
+    restart: unless-stopped
+    expose:
+        - 9000
+    container_name: my-app
+    depends_on:
+    volumes:
+        - '../myproject.loc:/www'
+
+      # --- server - 'nginx' ---
+  nginx:
+    image: nginx:1.19-alpine
+    container_name: my-nginx
+    restart: unless-stopped
+    volumes:
+      - '../myproject.loc:/www'
+      - '../docker/nginx/conf.d:/etc/nginx/conf.d'
+    ports:
+        - '8000:80'
+
+
+  # --- database - 'posgresql' ---
+  postgres:
+    image: postgres:9.6
+    container_name: postgres
+    restart: unless-stopped
+    env_file:
+      - ../docker/.env
+
+

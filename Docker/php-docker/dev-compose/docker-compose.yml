@@ -1,0 +1,67 @@
+version: '3.8'
+
+
+volumes:
+  storage:
+    driver: local
+
+
+
+services:
+
+    # --- language - 'php8.1' ---
+  app:
+    build:
+      context: ../project
+      dockerfile: ../docker/php/Dockerfile
+    restart: unless-stopped
+    container_name: my-app
+    user: "${USER_ID:-1000}:${GROUP_ID:-1000}"
+    volumes:
+      - ../project:/project
+    env_file:
+      - .env
+
+
+
+
+
+
+  # --- server - 'nginx' ---
+  nginx:
+    image: nginx:1.19-alpine
+    container_name: my-nginx
+    restart: unless-stopped
+    volumes:
+      - '../project:/project'
+      -  '../docker/nginx/conf.d:/etc/nginx/conf.d'
+    env_file:
+      - .env
+    ports:
+      - '${Nginx_port:-80}:80'
+
+
+  # --- database - 'postgresql' ---
+  postgres:
+    image: postgres:15.0-alpine
+    container_name: postgres
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${DB:-mvc}
+      POSTGRES_USER: ${USER:-retmix}
+      POSTGRES_PASSWORD: ${PASSWORD:-retmix}
+    volumes:
+      - storage:/var/lib/postgresql/data
+    ports:
+      - "${Pg_port:-5432}:5432"
+
+      # --- database environment - 'adminer' ---
+  adminer:
+    image: adminer
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - '${Adminer_port:-8080}:8080'

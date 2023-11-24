@@ -1,0 +1,29 @@
+{% extends "base_generic.html" %}
+
+
+<head>
+  {% block title %}
+      <title>index</title>
+    {% endblock %}
+  </head>
+{% block content %}
+  <h1>General Page</h1>
+
+ <h2>Orders</h2>
+
+        {% for order in orders %}
+<ul>
+
+  <li><strong>Заявка:</strong> {{ order.title }}</li>
+  <li><strong>Категория:</strong> {{ order.category }}</li>
+  <li><strong>Изображение:</strong> <image src="{{order.design_image.url }}" style="height: 100px; width: 100px;"></image></li>
+  <li><strong>Временная метка:</strong> {{ order.order_time }}</li>
+
+</ul>
+    {% endfor %}
+
+
+<p>
+  In working: {{ in_working }}.
+</p>
+{% endblock %}

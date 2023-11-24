@@ -1,0 +1,5 @@
+/docker/.env
+**/logs
+.idea
+/pop-it-mvc/vendor
+/pop-it-mvc/composer.lock

@@ -1,0 +1,62 @@
+version: '3.8'
+
+
+volumes:
+  storage:
+    driver: local
+
+
+
+services:
+  app:
+    build:
+      context: ../project
+      dockerfile: ../docker/php/Dockerfile
+    restart: unless-stopped
+    container_name: my-app
+    user: "${USER_ID:-1000}:${GROUP_ID:-1000}"
+    volumes:
+      - ../project:/project
+    environment:
+
+      PHP_IDE_CONFIG: ${PHP_IDE_CONFIG:-serverName=docker}
+      XDEBUG_MODE: ${XDEBUG_MODE:-yes}
+      XDEBUG_CONFIG: "client_host=host.docker.internal"
+      XDEBUG_TRIGGER: 'yes'
+
+
+
+
+  # --- server - 'nginx' ---
+  nginx:
+    image: nginx:1.19-alpine
+    container_name: my-nginx
+    restart: unless-stopped
+    volumes:
+      - '../project:/project'
+      -  '../docker/nginx/conf.d:/etc/nginx/conf.d'
+    ports:
+      - '${Nginx_port:-80}:80'
+
+
+  # --- database - 'postgresql' ---
+  postgres:
+    image: postgres:15.0-alpine
+    container_name: postgres
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: ${DB:-mvc}
+      POSTGRES_USER: ${USER:-retmix}
+      POSTGRES_PASSWORD: ${PASSWORD:-retmix}
+    volumes:
+      - storage:/var/lib/postgresql/data
+    ports:
+      - "${Pg_port:-5432}:5432"
+
+      # --- database environment - 'adminer' ---
+  adminer:
+    image: adminer
+    restart: unless-stopped
+    ports:
+      - '${Adminer_port:-8080}:8080'

@@ -1,0 +1,26 @@
+{
+    "name": "rms1t/gryschewsky_style",
+    "description": "simple mvc project",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "rms1t"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.4 | ^8.0",
+        "illuminate/database": "10.x-dev",
+        "illuminate/events": "10.x-dev",
+        "nikic/fast-route": "^2.0@dev",
+        "larapack/dd": "dev-master",
+        "rms1t/collect": "dev-main"
+    },
+    "autoload": {
+        "psr-4": {
+            "Src\\": "core/Src/",
+            "": "app/"
+        }
+    }
+}

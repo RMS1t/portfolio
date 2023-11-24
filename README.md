@@ -13,7 +13,7 @@
 | 1 | Окружение для php | [перейти к проекту](https://github.com/RMS1t/portfolio/tree/main/Docker/php-docker) |
 | - | PHP | --- |
 | 1 |MVC(Освоение монолит + рест -апи) | [перейти к проекту](https://github.com/RMS1t/portfolio/tree/main/PHP/Pet-projects/MVC_1) |
-| 2 | MVC(Освоение монолит блог) | [перейти к проекту]() |
+| 2 | MVC(Освоение монолит блог) | [перейти к проекту](https://github.com/RMS1t/portfolio/tree/main/PHP/Pet-projects/MVC_2) |
 | 3 | Laravel restapi( (в доработке)) | [перейти к проекту](https://github.com/RMS1t/portfolio/tree/main/PHP/Pet-projects/Some_API_Actions) |
 
 

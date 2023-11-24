@@ -4,7 +4,6 @@
 |---|---|---|
 |  | Парсинг ||
 | 1 | Парсинг сайта listtarvel(таблица городов) | [перейти к проекту]() |
-|---|---|---|
 | - | Django | --- |
 | 1 |Монолит (Библиотека) | [перейти к проекту](https://github.com/RMS1t/portfolio/tree/main/Django/Pet-projects/LocalLibrary)) |
 | 2 | Монолит (Сайт заявок для дизайна) | [перейти к проекту](https://github.com/RMS1t/portfolio/tree/main/Django/Pet-projects/OrderBoard) |
@@ -18,16 +17,3 @@
 | 3 | Laravel restapi( (в доработке)) | [перейти к проекту](https://github.com/RMS1t/portfolio/tree/main/PHP/Pet-projects/Some_API_Actions) |
 
 
-|   |   |   |
-|---|---|---|
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
